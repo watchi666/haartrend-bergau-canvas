@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haartrend Bergau — Botanical Clean</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:      oklch(0.99 0.002 100);
+  --surface: oklch(0.96 0.005 108);
+  --ink:     oklch(0.17 0.005 120);
+  --muted:   oklch(0.52 0.008 115);
+  --accent:  oklch(0.50 0.20 46);
+  --olive:   oklch(0.68 0.08 125);
+  --olive-light: oklch(0.88 0.02 125);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{
+  font-family:"Urbanist",-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  font-weight:400;
+}
+section{padding:clamp(3rem,8vw,8rem) clamp(1.25rem,6vw,4rem)}
+
+/* ── Nav ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1rem clamp(1.25rem,6vw,4rem);
+  background:oklch(0.99 0.002 100 / 0.85);
+  backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid oklch(0.92 0.005 108);
+}
+.nav-brand{
+  font-family:"Urbanist",sans-serif;
+  font-weight:800;font-size:1.1rem;
+  letter-spacing:-0.02em;color:var(--ink);
+}
+.nav-brand span{color:var(--accent);font-weight:600}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{
+  font-size:0.875rem;font-weight:500;color:var(--muted);
+  text-decoration:none;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--accent)}
+
+/* ── Hero ── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding-top:5rem;
+  background:linear-gradient(
+    170deg,
+    oklch(0.99 0.002 100) 0%,
+    oklch(0.965 0.01 115) 40%,
+    oklch(0.94 0.015 120) 100%
+  );
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;
+  top:-20%;right:-10%;
+  width:50%;height:140%;
+  background:radial-gradient(ellipse,oklch(0.68 0.08 125 / 0.08),transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{max-width:900px;position:relative;z-index:1}
+.hero-eyebrow{
+  font-size:0.75rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:0.15em;color:var(--accent);
+  margin-bottom:1.5rem;
+}
+.hero h1{
+  font-size:clamp(2.5rem,6vw,5rem);
+  font-weight:800;line-height:1.05;
+  letter-spacing:-0.03em;margin-bottom:1.5rem;
+}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{
+  font-size:clamp(1rem,1.5vw,1.2rem);
+  color:var(--muted);max-width:500px;
+  line-height:1.6;margin-bottom:2.5rem;
+  font-weight:300;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  padding:0.85rem 2rem;border-radius:2px;
+  background:var(--accent);color:#fff;
+  font-weight:700;font-size:1rem;
+  text-decoration:none;letter-spacing:-0.01em;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px oklch(0.50 0.20 46 / 0.3)}
+.hero-cta-outline{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  padding:0.85rem 2rem;border-radius:2px;
+  border:1.5px solid var(--olive);
+  color:var(--ink);font-weight:600;font-size:1rem;
+  text-decoration:none;margin-left:1rem;
+  transition:border-color 0.2s;
+}
+.hero-cta-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ── Sections ── */
+.section-label{
+  font-size:0.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.2em;color:var(--accent);
+  margin-bottom:1rem;display:block;
+}
+.section-title{
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  font-weight:800;line-height:1.15;
+  letter-spacing:-0.025em;margin-bottom:1rem;
+}
+.section-subtitle{
+  font-size:1.05rem;color:var(--muted);
+  max-width:500px;line-height:1.55;font-weight:300;
+}
+
+/* ── Leistungen ── */
+.leistungen{
+  background:linear-gradient(
+    180deg,
+    var(--bg) 0%,
+    oklch(0.975 0.006 112) 100%
+  );
+}
+.leistungen-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:clamp(1.5rem,3vw,2.5rem);
+  margin-top:3rem;
+}
+.leistung-item{
+  padding:clamp(1.25rem,2vw,1.75rem);
+  border-radius:2px;
+  background:var(--surface);
+  border:1px solid oklch(0.90 0.005 108);
+  transition:border-color 0.2s,transform 0.2s;
+}
+.leistung-item:hover{
+  border-color:var(--olive);
+  transform:translateY(-2px);
+}
+.leistung-name{
+  font-size:1.15rem;font-weight:700;
+  margin-bottom:0.3rem;letter-spacing:-0.01em;
+}
+.leistung-desc{
+  font-size:0.875rem;color:var(--muted);
+  font-weight:300;
+}
+.leistung-accent{
+  display:inline-block;margin-top:0.75rem;
+  font-size:0.75rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:0.08em;color:var(--accent);
+}
+
+/* ── Story / Über ── */
+.story{
+  background:linear-gradient(
+    180deg,
+    oklch(0.975 0.006 112) 0%,
+    var(--bg) 50%,
+    oklch(0.98 0.004 108) 100%
+  );
+}
+.story-inner{
+  max-width:750px;margin:0 auto;text-align:center;
+}
+.story-inner .section-label{text-align:center}
+.story-inner .section-title{text-align:center}
+.story-quote{
+  font-size:clamp(1.3rem,2.5vw,1.8rem);
+  font-weight:300;line-height:1.5;
+  color:var(--ink);margin-top:2rem;
+  font-style:italic;
+}
+.story-quote strong{color:var(--accent);font-weight:700;font-style:normal}
+.story-owner{
+  font-size:0.9rem;color:var(--muted);
+  margin-top:1rem;font-weight:600;
+}
+
+/* ── Öffnungszeiten ── */
+.stunden{
+  background:var(--bg);
+}
+.stunden-list{
+  max-width:420px;margin-top:2rem;
+}
+.stunden-item{
+  display:flex;justify-content:space-between;
+  padding:0.7rem 0;
+  border-bottom:1px solid oklch(0.92 0.004 108);
+  font-size:1rem;
+}
+.stunden-day{font-weight:600}
+.stunden-time{color:var(--muted);font-weight:300}
+.stunden-item.heute{
+  background:oklch(0.96 0.01 115);
+  margin:0 -1rem;padding:0.7rem 1rem;
+  border-radius:3px;
+}
+
+/* ── Marken ── */
+.marken{
+  background:linear-gradient(
+    180deg,
+    var(--bg) 0%,
+    oklch(0.975 0.006 112) 100%
+  );
+}
+.marken-flow{
+  display:flex;flex-wrap:wrap;gap:1.5rem 3rem;
+  margin-top:2rem;align-items:center;
+}
+.marken-item{
+  font-size:1.1rem;font-weight:600;
+  color:var(--ink);letter-spacing:-0.01em;
+}
+.marken-item span{
+  font-size:0.75rem;font-weight:400;color:var(--muted);
+  display:block;margin-top:0.15rem;
+}
+
+/* ── CTA Banner ── */
+.cta-banner{
+  background:linear-gradient(135deg,
+    oklch(0.72 0.06 125) 0%,
+    oklch(0.64 0.10 128) 100%
+  );
+  text-align:center;
+  padding:clamp(3rem,8vw,6rem) clamp(1.25rem,6vw,4rem);
+}
+.cta-banner h2{
+  font-size:clamp(1.5rem,3vw,2.2rem);
+  font-weight:800;color:oklch(0.18 0.010 125);
+  letter-spacing:-0.02em;margin-bottom:0.75rem;
+}
+.cta-banner p{
+  color:oklch(0.25 0.012 125);max-width:400px;
+  margin:0 auto 2rem;font-weight:300;
+}
+.cta-banner .hero-cta{
+  background:oklch(0.20 0.010 125);color:oklch(0.95 0.008 110);
+}
+.cta-banner .hero-cta:hover{
+  background:oklch(0.25 0.012 125);
+  box-shadow:0 8px 24px oklch(0.18 0.010 125 / 0.3);
+}
+.btc-hinweis{
+  margin-top:1.5rem;font-size:0.85rem;
+  color:oklch(0.30 0.015 125 / 0.7);
+  font-weight:400;
+}
+
+/* ── Footer ── */
+footer{
+  background:oklch(0.14 0.005 120);
+  color:oklch(0.80 0.005 110);
+  padding:clamp(2.5rem,6vw,4rem) clamp(1.25rem,6vw,4rem);
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:2rem;max-width:900px;
+}
+.footer-brand{font-weight:800;font-size:1.1rem;letter-spacing:-0.02em}
+.footer-brand span{color:var(--accent)}
+.footer-addr{font-size:0.9rem;color:oklch(0.65 0.005 110);line-height:1.7;margin-top:0.5rem}
+.footer-label{
+  font-size:0.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.15em;color:oklch(0.55 0.005 110);
+  margin-bottom:0.75rem;
+}
+.footer a{color:oklch(0.80 0.005 110);text-decoration:none}
+.footer a:hover{color:var(--accent)}
+.footer-credit{
+  margin-top:3rem;text-align:center;
+  font-size:0.8rem;color:oklch(0.50 0.004 110);
+}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hero-cta-outline{margin-left:0;margin-top:0.8rem;display:flex}
+  .leistungen-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand"><span>Haartrend</span> Bergau</div>
+  <ul class="nav-links">
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#story">Über uns</a></li>
+    <li><a href="#stunden">Öffnungszeiten</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Salon in Düsseldorf-Flingern</p>
+    <h1>Handwerk,<br><em>das man sieht.</em></h1>
+    <p>Haarschnitt, Farbe, Pflege — mit Präzision und dem Blick fürs Detail. Seit über 25 Jahren Ihr Friseur in Flingern.</p>
+    <a href="tel:+49211672115" class="hero-cta">Jetzt Termin →</a>
+    <a href="#leistungen" class="hero-cta-outline">Alle Leistungen</a>
+  </div>
+</section>
+
+<!-- ═══ LEISTUNGEN ═══ -->
+<section class="leistungen" id="leistungen">
+  <span class="section-label">Leistungen</span>
+  <h2 class="section-title">Was wir für Sie tun</h2>
+  <p class="section-subtitle">Vom klassischen Schnitt bis zur Typveränderung — hier ist alles Handwerk.</p>
+
+  <div class="leistungen-grid">
+    <div class="leistung-item">
+      <div class="leistung-name">Haarschnitt</div>
+      <div class="leistung-desc">Präzision, die sitzt. Damen, Herren, Kinder — jeder Schnitt mit System.</div>
+      <span class="leistung-accent">ab 35 €</span>
+    </div>
+    <div class="leistung-item">
+      <div class="leistung-name">Färben & Strähnen</div>
+      <div class="leistung-desc">L'Oréal Professional. Natürlich oder Statement — Sie entscheiden.</div>
+      <span class="leistung-accent">ab 45 €</span>
+    </div>
+    <div class="leistung-item">
+      <div class="leistung-name">Haarverlängerung</div>
+      <div class="leistung-desc">Hairdreams Qualität. Echthaar, unsichtbare Übergänge.</div>
+      <span class="leistung-accent">ab 150 €</span>
+    </div>
+    <div class="leistung-item">
+      <div class="leistung-name">Typveränderung</div>
+      <div class="leistung-desc">Neue Frisur, neue Farbe, neues Gefühl. Beratung inklusive.</div>
+      <span class="leistung-accent">Beratung gratis</span>
+    </div>
+    <div class="leistung-item">
+      <div class="leistung-name">Kosmetik & Waxing</div>
+      <div class="leistung-desc">Professionelle Haarentfernung und Gesichtspflege mit Alcina.</div>
+      <span class="leistung-accent">Termin nach Absprache</span>
+    </div>
+    <div class="leistung-item">
+      <div class="leistung-name">Wimpernstyling</div>
+      <div class="leistung-desc">Wimpern färben oder formen. Natürlich oder dramatisch.</div>
+      <span class="leistung-accent">ab 18 €</span>
+    </div>
+    <div class="leistung-item">
+      <div class="leistung-name">Piercing</div>
+      <div class="leistung-desc">Hygienisch, präzise, professionell. Mit medizinischem Stahl.</div>
+      <span class="leistung-accent">ab 25 €</span>
+    </div>
+    <div class="leistung-item">
+      <div class="leistung-name">Haarstyling</div>
+      <div class="leistung-desc">GHD-Tools für den perfekten Look. Für jeden Anlass.</div>
+      <span class="leistung-accent">ab 25 €</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STORY ═══ -->
+<section class="story" id="story">
+  <div class="story-inner">
+    <span class="section-label">Der Salon</span>
+    <h2 class="section-title">Handwerk mit Seele</h2>
+    <p class="story-quote">„Ich will, dass Sie den Salon verlassen und sich <strong>richtig gut fühlen</strong>. Nicht nur wegen der Frisur — sondern weil jemand genau hingesehen hat.“</p>
+    <p class="story-owner">Ildikó Bergau, Inhaberin & Meisterin</p>
+  </div>
+</section>
+
+<!-- ═══ ÖFFNUNGSZEITEN ═══ -->
+<section class="stunden" id="stunden">
+  <span class="section-label">Wann wir da sind</span>
+  <h2 class="section-title">Öffnungszeiten</h2>
+  <div class="stunden-list">
+    <div class="stunden-item"><span class="stunden-day">Dienstag</span><span class="stunden-time">09:00 – 19:00</span></div>
+    <div class="stunden-item"><span class="stunden-day">Mittwoch</span><span class="stunden-time">09:00 – 18:00</span></div>
+    <div class="stunden-item"><span class="stunden-day">Donnerstag</span><span class="stunden-time">09:00 – 19:00</span></div>
+    <div class="stunden-item"><span class="stunden-day">Freitag</span><span class="stunden-time">09:00 – 19:00</span></div>
+    <div class="stunden-item"><span class="stunden-day">Samstag</span><span class="stunden-time">09:00 – 15:00</span></div>
+  </div>
+</section>
+
+<!-- ═══ MARKEN ═══ -->
+<section class="marken">
+  <span class="section-label">Qualität</span>
+  <h2 class="section-title">Unsere Marken</h2>
+  <div class="marken-flow">
+    <div class="marken-item">L'Oréal<span>Professional</span></div>
+    <div class="marken-item">Hairdreams<span>Haarverlängerung</span></div>
+    <div class="marken-item">GHD<span>Styling-Tools</span></div>
+    <div class="marken-item">Alcina<span>Kosmetik & Pflege</span></div>
+  </div>
+</section>
+
+<!-- ═══ CTA BANNER ═══ -->
+<section class="cta-banner">
+  <h2>5 € Willkommensgutschein</h2>
+  <p>Für Neukunden. Einfach beim ersten Besuch vorzeigen oder erwähnen.</p>
+  <a href="tel:+49211672115" class="hero-cta">Jetzt anrufen & Termin machen →</a>
+  <p class="btc-hinweis">Zahlung auch per Bitcoin möglich ₿</p>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer id="kontakt">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand"><span>Haartrend</span> Bergau</div>
+      <div class="footer-addr">
+        Flurstr. 33<br>
+        40235 Düsseldorf-Flingern<br>
+        <a href="tel:+49211672115">(0211) 67 21 15</a><br>
+        <a href="mailto:info@haartrend-bergau.de">info@haartrend-bergau.de</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-label">Links</div>
+      <div><a href="#leistungen">Leistungen</a></div>
+      <div><a href="#story">Über uns</a></div>
+      <div><a href="#stunden">Öffnungszeiten</a></div>
+    </div>
+    <div>
+      <div class="footer-label">Rechtliches</div>
+      <div><a href="#">Impressum</a></div>
+      <div><a href="#">Datenschutz</a></div>
+    </div>
+  </div>
+  <p class="footer-credit">Haartrend Bergau · Ildikó Bergau · Flurstr. 33, 40235 Düsseldorf-Flingern</p>
+</footer>
+
+</body>
+</html>

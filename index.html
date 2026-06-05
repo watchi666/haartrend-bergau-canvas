@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designauswahl — Haartrend Bergau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Urbanist:wght@300;600;800&family=Sora:wght@300;600;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,700;1,7..72,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#080808;
+  color:#e8e3dd;
+  min-height:100vh;
+  padding:clamp(3rem,6vw,6rem) clamp(1.25rem,4vw,3rem);
+}
+a{color:inherit;text-decoration:none}
+
+.page-header{
+  text-align:center;
+  margin-bottom:clamp(3.5rem,6vw,6rem);
+}
+.eyebrow{
+  font-family:"JetBrains Mono",monospace;
+  font-size:11px;font-weight:500;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:#6a6460;margin-bottom:1.25rem;display:block;
+}
+.page-title{
+  font-family:"Instrument Serif","Times New Roman",serif;
+  font-size:clamp(2.25rem,5vw,4rem);
+  line-height:1.1;font-weight:400;
+  letter-spacing:-0.025em;
+  color:#e8e3dd;margin-bottom:1.25rem;
+}
+.page-title em{font-style:italic;color:oklch(0.50 0.20 46)}
+.page-subtitle{
+  font-size:clamp(0.9375rem,1.1vw,1.0625rem);
+  color:#7a736c;line-height:1.55;max-width:560px;margin:0 auto;
+}
+
+/* Palette bar */
+.palette-strip{
+  display:flex;gap:0.4rem;justify-content:center;
+  margin-top:2rem;align-items:center;
+}
+.palette-dot{
+  width:2rem;height:2rem;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.12);
+  cursor:pointer;transition:transform 0.2s;
+}
+.palette-dot:hover{transform:scale(1.3)}
+.palette-label{
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;color:#4a4540;
+  margin-left:0.75rem;
+}
+
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:clamp(1.25rem,2.5vw,2rem);
+  max-width:1240px;margin:0 auto;
+}
+
+.design-card{
+  display:flex;flex-direction:column;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:3px;overflow:hidden;
+  transition:border-color 0.3s,transform 0.3s;
+  cursor:pointer;
+}
+.design-card:hover{transform:translateY(-4px)}
+.design-card.card-a:hover{border-color:rgba(168,175,140,0.4)}
+.design-card.card-b:hover{border-color:rgba(205,130,60,0.5)}
+.design-card.card-c:hover{border-color:rgba(155,165,130,0.4)}
+
+/* ── Card Preview Area ── */
+.card-preview{
+  position:relative;
+  height:clamp(200px,22vw,280px);
+  overflow:hidden;flex-shrink:0;
+}
+
+/* ── Option A: Botanical Clean ── */
+.preview-a{background:#faf9f6}
+.preview-a .mock-nav{
+  position:absolute;top:0;left:0;right:0;height:36px;
+  background:rgba(250,249,246,0.92);
+  border-bottom:1px solid oklch(0.88 0.005 110);
+  display:flex;align-items:center;padding:0 1rem;gap:0.6rem;
+}
+.mock-logo-a{
+  font-family:"Urbanist",sans-serif;
+  font-size:12px;font-weight:700;
+  color:oklch(0.25 0.008 120);
+  letter-spacing:-0.01em;
+}
+.mock-logo-a span{color:oklch(0.50 0.20 46)}
+.mock-nav-dots{display:flex;gap:0.4rem;margin-left:auto}
+.mock-nav-dot{width:5px;height:5px;border-radius:50%;background:oklch(0.75 0.01 110)}
+.mock-badge-a{
+  position:absolute;top:52px;left:1rem;
+  padding:3px 8px;border-radius:100px;
+  background:oklch(0.92 0.015 125);
+  font-size:8px;font-family:"Inter",sans-serif;
+  font-weight:600;letter-spacing:0.06em;
+  text-transform:uppercase;color:oklch(0.40 0.06 125);
+}
+.mock-h1-a{
+  position:absolute;top:78px;left:1rem;right:1rem;
+  font-family:"Urbanist",sans-serif;
+  font-size:clamp(1.1rem,2.5vw,1.6rem);
+  font-weight:800;line-height:1.1;
+  letter-spacing:-0.02em;
+  color:oklch(0.17 0.005 120);
+}
+.mock-h1-a .accent{color:oklch(0.50 0.20 46)}
+.mock-leaf{
+  position:absolute;bottom:-10px;right:-10px;
+  width:60px;height:60px;
+  border-radius:50%;
+  background:radial-gradient(circle,oklch(0.68 0.08 125 / 0.12),transparent 70%);
+}
+.mock-ctas-a{
+  position:absolute;bottom:0.8rem;left:1rem;
+  display:flex;gap:0.4rem;align-items:center;
+}
+.mock-btn-a{
+  padding:5px 12px;border-radius:2px;
+  font-size:9px;font-family:"Inter",sans-serif;
+  font-weight:600;letter-spacing:0.04em;
+  background:oklch(0.50 0.20 46);color:#fff;
+}
+.mock-btn-out-a{
+  padding:4px 10px;border-radius:2px;
+  font-size:8px;font-family:"Inter",sans-serif;
+  border:1px solid oklch(0.48 0.08 125 / 0.3);
+  color:oklch(0.48 0.08 125);
+}
+
+/* ── Option B: Kupfer Statement ── */
+.preview-b{background:#0a0806}
+.preview-b .mock-nav{
+  position:absolute;top:0;left:0;right:0;height:36px;
+  background:rgba(10,8,6,0.92);
+  border-bottom:1px solid oklch(0.50 0.20 46 / 0.15);
+  display:flex;align-items:center;padding:0 1rem;gap:0.6rem;
+}
+.mock-logo-b{
+  font-family:"Sora",sans-serif;
+  font-size:12px;font-weight:700;
+  color:#e8e3dd;letter-spacing:-0.01em;
+}
+.mock-logo-b span{color:oklch(0.52 0.20 48)}
+.mock-beam{
+  position:absolute;top:-40px;left:30%;
+  width:2px;height:140px;
+  background:linear-gradient(to bottom,oklch(0.55 0.20 46 / 0.15),transparent);
+  transform:rotate(-12deg);
+}
+.mock-glow-b{
+  position:absolute;top:30px;left:50%;transform:translateX(-50%);
+  width:100px;height:60px;border-radius:50%;
+  background:radial-gradient(ellipse,oklch(0.52 0.20 46 / 0.12),transparent 70%);
+}
+.mock-h1-b{
+  position:absolute;top:50px;left:1rem;right:1rem;
+  font-family:"Sora",sans-serif;
+  font-size:clamp(1rem,2.2vw,1.4rem);
+  font-weight:800;line-height:1.15;
+  letter-spacing:-0.02em;color:#e8e3dd;
+}
+.mock-h1-b .accent{color:oklch(0.55 0.20 48)}
+.mock-cards-b{
+  position:absolute;bottom:0.8rem;left:1rem;right:1rem;
+  display:flex;gap:0.4rem;
+}
+.mock-card-b{
+  flex:1;height:40px;border-radius:2px;
+  background:oklch(0.50 0.20 46 / 0.08);
+  border:1px solid oklch(0.50 0.20 46 / 0.15);
+}
+.mock-btn-b{
+  background:oklch(0.52 0.20 48);color:#0a0806;
+}
+
+/* ── Option C: Salon Wärme ── */
+.preview-c{background:oklch(0.22 0.012 120)}
+.preview-c .mock-nav{
+  position:absolute;top:0;left:0;right:0;height:36px;
+  background:oklch(0.22 0.012 120 / 0.92);
+  border-bottom:1px solid oklch(0.50 0.20 46 / 0.12);
+  display:flex;align-items:center;padding:0 1rem;gap:0.6rem;
+}
+.mock-logo-c{
+  font-family:"Literata",serif;
+  font-size:12px;font-weight:700;
+  color:#e8e3dd;letter-spacing:-0.01em;
+}
+.mock-logo-c em{color:oklch(0.52 0.20 48);font-style:italic}
+.mock-warm-glow{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:140px;height:90px;border-radius:50%;
+  background:radial-gradient(ellipse,oklch(0.68 0.08 125 / 0.10),transparent 70%);
+}
+.mock-h1-c{
+  position:absolute;top:50px;left:1rem;right:1rem;
+  font-family:"Literata",serif;
+  font-size:clamp(1rem,2.2vw,1.4rem);
+  font-weight:700;font-style:italic;
+  line-height:1.15;color:#e8e3dd;
+}
+.mock-h1-c .warm{color:oklch(0.52 0.20 48)}
+.mock-strip-c{
+  position:absolute;bottom:0.8rem;left:0;right:0;
+  height:24px;
+  background:oklch(0.18 0.010 120 / 0.6);
+  border-top:1px solid oklch(0.50 0.20 46 / 0.12);
+  display:flex;align-items:center;overflow:hidden;
+}
+.mock-strip-inner{
+  display:flex;gap:0.8rem;align-items:center;white-space:nowrap;
+  animation:stripScroll 12s linear infinite;
+}
+.mock-strip-word{
+  font-family:"Literata",serif;
+  font-size:8px;font-style:italic;
+  color:oklch(0.55 0.008 115 / 0.7);
+}
+.mock-strip-dot{
+  width:2px;height:2px;border-radius:50%;
+  background:oklch(0.50 0.20 46);flex-shrink:0;
+}
+@keyframes stripScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* ── Card Body ── */
+.card-body{
+  padding:clamp(1.5rem,2.5vw,2rem);
+  flex:1;display:flex;flex-direction:column;
+  gap:1rem;background:#0f0d0b;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.card-tag{
+  display:inline-block;padding:0.3rem 0.7rem;
+  border-radius:100px;
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  align-self:flex-start;
+}
+.tag-a{background:oklch(0.68 0.08 125 / 0.15);color:oklch(0.68 0.10 125)}
+.tag-b{background:oklch(0.50 0.20 46 / 0.15);color:oklch(0.55 0.20 48)}
+.tag-c{background:oklch(0.60 0.06 120 / 0.12);color:oklch(0.62 0.08 122)}
+
+.card-name{
+  font-family:"Instrument Serif",serif;
+  font-size:clamp(1.25rem,1.8vw,1.6rem);
+  line-height:1.1;color:#e8e3dd;
+}
+.card-desc{
+  font-size:14px;color:#7a736c;
+  line-height:1.6;flex:1;
+}
+.card-cta{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  padding:0.7rem 1.25rem;border-radius:2px;
+  font-size:13px;font-weight:500;letter-spacing:-0.005em;
+  align-self:flex-start;
+  transition:background 0.2s,box-shadow 0.2s,transform 0.2s;
+}
+.cta-a{background:oklch(0.68 0.10 125);color:#0a0a0a}
+.cta-a:hover{background:oklch(0.72 0.12 125);box-shadow:0 0 16px oklch(0.68 0.08 125 / 0.3);transform:translateY(-1px)}
+.cta-b{background:oklch(0.52 0.20 48);color:#0a0806}
+.cta-b:hover{background:oklch(0.58 0.22 48);box-shadow:0 0 16px oklch(0.50 0.20 46 / 0.4);transform:translateY(-1px)}
+.cta-c{background:oklch(0.60 0.08 122);color:#111;}
+.cta-c:hover{background:oklch(0.65 0.10 122);box-shadow:0 0 16px oklch(0.60 0.06 120 / 0.25);transform:translateY(-1px)}
+
+.card-features{
+  list-style:none;
+  display:flex;flex-direction:column;gap:0.4rem;
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding-top:1rem;margin-top:auto;
+}
+.card-features li{
+  font-size:12.5px;color:#5a5450;
+  display:flex;align-items:center;gap:0.5rem;
+}
+.card-features li::before{content:'·';font-size:16px;line-height:1;flex-shrink:0}
+.card-features li.feat-a::before{color:oklch(0.68 0.10 125)}
+.card-features li.feat-b::before{color:oklch(0.52 0.20 48)}
+.card-features li.feat-c::before{color:oklch(0.60 0.08 122)}
+
+.page-footer{
+  text-align:center;margin-top:clamp(4rem,7vw,7rem);
+  padding-top:2rem;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.page-footer p{
+  font-family:"JetBrains Mono",monospace;
+  font-size:11px;letter-spacing:0.12em;
+  text-transform:uppercase;color:#3a3530;
+}
+
+@media(max-width:900px){
+  .cards-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <span class="eyebrow">Designauswahl Friseur</span>
+  <h1 class="page-title">Drei Designs für <em>Haartrend Bergau</em></h1>
+  <p class="page-subtitle">Jede Variante nutzt dieselbe oliv-kupfer Palette, denselben Inhalt — unterscheidet sich aber in Stimmung, Layout und Typografie. Klicke auf eine Option für die Vollversion.</p>
+  <div class="palette-strip">
+    <div class="palette-dot" style="background:oklch(0.68 0.08 125)" title="Primary: Oliv"></div>
+    <div class="palette-dot" style="background:oklch(0.99 0.002 100)" title="bg"></div>
+    <div class="palette-dot" style="background:oklch(0.17 0.005 120)" title="ink"></div>
+    <div class="palette-dot" style="background:oklch(0.50 0.20 46)" title="Accent: Kupfer"></div>
+    <span class="palette-label">OKLCH · Strategy: Restrained · Kupfer führt</span>
+  </div>
+</header>
+
+<div class="cards-grid">
+
+  <!-- ═══ Option A: Botanical Clean ═══ -->
+  <div class="design-card card-a" onclick="location.href='variant-a/'">
+    <div class="card-preview preview-a">
+      <div class="mock-leaf"></div>
+      <div class="mock-nav preview-a">
+        <div class="mock-logo-a"><span>Haartrend</span> Bergau</div>
+        <div class="mock-nav-dots">
+          <div class="mock-nav-dot"></div><div class="mock-nav-dot"></div><div class="mock-nav-dot"></div>
+        </div>
+      </div>
+      <div class="mock-badge-a">Salon Flingern</div>
+      <div class="mock-h1-a">
+        Handwerk, <span class="accent">das man sieht.</span>
+      </div>
+      <div class="mock-ctas-a">
+        <div class="mock-btn mock-btn-a">Termin</div>
+        <div class="mock-btn-out-a">Leistungen</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <span class="card-tag tag-a">Variante A</span>
+      <h2 class="card-name">Botanical Clean</h2>
+      <p class="card-desc">Heller, luftiger Onepager. Urbanist als geometrische Stimme, Oliv nur als Hauch in getönten Flächen. Kupfer-Akzente sitzen präzise — CTA, feine Linien. Der Raum atmet durch großzügige Abstände.</p>
+      <a href="variant-a/" class="card-cta cta-a">Vollversion →</a>
+      <ul class="card-features">
+        <li class="feat-a">Heller Hintergrund, viel Weißraum</li>
+        <li class="feat-a">Urbanist — geometrisch, klar</li>
+        <li class="feat-a">Oliv nur als Unterton</li>
+        <li class="feat-a">Kupfer als präziser Akzent</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══ Option B: Kupfer Statement ═══ -->
+  <div class="design-card card-b" onclick="location.href='variant-b/'">
+    <div class="card-preview preview-b">
+      <div class="mock-beam"></div>
+      <div class="mock-glow-b"></div>
+      <div class="mock-nav preview-b">
+        <div class="mock-logo-b"><span>Haartrend</span> Bergau</div>
+        <div class="mock-nav-dots">
+          <div class="mock-nav-dot"></div><div class="mock-nav-dot"></div><div class="mock-nav-dot"></div>
+        </div>
+      </div>
+      <div class="mock-h1-b">
+        Ihr Haar.<br><span class="accent">Unser Handwerk.</span>
+      </div>
+      <div class="mock-cards-b">
+        <div class="mock-card-b"></div>
+        <div class="mock-card-b"></div>
+        <div class="mock-card-b"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <span class="card-tag tag-b">Variante B</span>
+      <h2 class="card-name">Kupfer Statement</h2>
+      <p class="card-desc">Mutig, dunkel, dramatisch. Sora als technisch-warme Stimme. Kupfer dominiert — große Flächen, metallische Reflexe. Der Salon wird zur Bühne, ohne laut zu sein.</p>
+      <a href="variant-b/" class="card-cta cta-b">Vollversion →</a>
+      <ul class="card-features">
+        <li class="feat-b">Dunkler Hintergrund</li>
+        <li class="feat-b">Sora — technisch, warm</li>
+        <li class="feat-b">Kupfer als dominante Farbe</li>
+        <li class="feat-b">Hoher Kontrast, tiefe Schatten</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══ Option C: Salon Wärme ═══ -->
+  <div class="design-card card-c" onclick="location.href='variant-c/'">
+    <div class="card-preview preview-c">
+      <div class="mock-warm-glow"></div>
+      <div class="mock-nav preview-c">
+        <div class="mock-logo-c"><em>Haartrend</em> Bergau</div>
+        <div class="mock-nav-dots">
+          <div class="mock-nav-dot"></div><div class="mock-nav-dot"></div><div class="mock-nav-dot"></div>
+        </div>
+      </div>
+      <div class="mock-h1-c">
+        Meisterin<br><span class="warm">am Werk.</span>
+      </div>
+      <div class="mock-strip-c">
+        <div class="mock-strip-inner">
+          <span class="mock-strip-word">Haarschnitt</span><span class="mock-strip-dot"></span>
+          <span class="mock-strip-word">Farbe</span><span class="mock-strip-dot"></span>
+          <span class="mock-strip-word">Wimpern</span><span class="mock-strip-dot"></span>
+          <span class="mock-strip-word">Pflege</span><span class="mock-strip-dot"></span>
+          <span class="mock-strip-word">Typveränderung</span><span class="mock-strip-dot"></span>
+          <span class="mock-strip-word">Haarschnitt</span><span class="mock-strip-dot"></span>
+          <span class="mock-strip-word">Farbe</span><span class="mock-strip-dot"></span>
+          <span class="mock-strip-word">Wimpern</span><span class="mock-strip-dot"></span>
+          <span class="mock-strip-word">Pflege</span><span class="mock-strip-dot"></span>
+          <span class="mock-strip-word">Typveränderung</span><span class="mock-strip-dot"></span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <span class="card-tag tag-c">Variante C</span>
+      <h2 class="card-name">Salon Wärme</h2>
+      <p class="card-desc">Einladend, handwerklich, vertraut. Literata bringt Charakter — die leichte Serife transportiert Wärme ohne Kitsch. Oliv-getönte Flächen, natürliche Texturen, Nachmittagslicht.</p>
+      <a href="variant-c/" class="card-cta cta-c">Vollversion →</a>
+      <ul class="card-features">
+        <li class="feat-c">Warm-oliv getönter Hintergrund</li>
+        <li class="feat-c">Literata — charaktervoll, warm</li>
+        <li class="feat-c">Oliv spürbar, aber nicht aufdringlich</li>
+        <li class="feat-c">Laufband mit Dienstleistungen</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="page-footer">
+  <p>Haartrend Bergau · Ildikó Bergau · Flurstr. 33, Düsseldorf-Flingern</p>
+</div>
+
+</body>
+</html>
