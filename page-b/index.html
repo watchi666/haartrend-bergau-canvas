@@ -6,224 +6,238 @@
 <title>Haartrend Bergau · Proof-Led</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg: oklch(0.97 0.003 108);
   --ink: oklch(0.16 0.005 120);
-  --muted: oklch(0.48 0.006 115);
+  --muted: oklch(0.45 0.006 115);
   --accent: oklch(0.52 0.20 48);
-  --olive-hint: oklch(0.72 0.04 125);
+  --olive: oklch(0.72 0.04 125);
+  --gap: clamp(5rem,8vw,9rem);
+  --pad: clamp(1rem,4vw,2.5rem);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{
-  font-family:"Manrope",-apple-system,sans-serif;
-  background:var(--bg);color:var(--ink);
-  line-height:1.55;font-weight:300;
-}
+body{font-family:"Manrope",-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-weight:300}
 
-/* ── NAV: minimal, floats over images ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:.9rem clamp(1rem,4vw,2.5rem);
-  display:flex;align-items:center;justify-content:space-between;
-  mix-blend-mode:difference;color:#fff;
-}
-.nav-brand{font-weight:700;font-size:1rem;letter-spacing:-.01em}
-.nav-links{display:flex;gap:1.25rem;list-style:none}
-.nav-links a{font-size:.78rem;text-decoration:none;color:inherit;opacity:.7;font-weight:400;text-transform:uppercase;letter-spacing:.06em;transition:opacity .2s}
+/* NAV — floats over imagery */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem var(--pad);display:flex;align-items:center;justify-content:space-between;mix-blend-mode:difference;color:#fff}
+.nav-brand{font-weight:700;font-size:1.1rem;letter-spacing:-.01em}
+.nav-brand span{font-weight:300;opacity:.7}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:.8rem;opacity:.75;text-decoration:none;font-weight:400;transition:opacity .2s}
 .nav-links a:hover{opacity:1}
-.nav-cta{font-size:.75rem;font-weight:700;text-decoration:none;color:inherit;text-transform:uppercase;letter-spacing:.04em}
-.nav-cta:hover{opacity:.8}
+.nav-cta{font-size:.78rem;font-weight:600;text-decoration:none;opacity:.9;border:1px solid rgba(255,255,255,.35);padding:.45rem 1rem;border-radius:2px;transition:all .2s}
+.nav-cta:hover{background:rgba(255,255,255,.1)}
 
-/* ── HERO: full-bleed image, minimal text ── */
-.hero{
-  height:100vh;display:flex;align-items:flex-end;
-  padding:0 0 clamp(3rem,8vw,6rem) clamp(1rem,4vw,2.5rem);
-  position:relative;overflow:hidden;
-}
-.hero img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
-}
-.hero-text{position:relative;z-index:1;max-width:500px}
-.hero-eyebrow{font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:var(--accent);margin-bottom:.75rem;display:block;font-weight:600}
-.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:.75rem;color:#fff}
-.hero p{font-size:1rem;color:rgba(255,255,255,.7);max-width:360px;line-height:1.5;margin-bottom:1.5rem;font-weight:300}
-.hero-cta{display:inline-block;padding:.7rem 1.5rem;border:1.5px solid rgba(255,255,255,.4);color:#fff;font-weight:600;text-decoration:none;border-radius:2px;font-size:.9rem;text-transform:uppercase;letter-spacing:.04em;transition:border-color .2s,background .2s}
-.hero-cta:hover{border-color:var(--accent);background:var(--accent)}
+/* HERO — full-bleed image, text bottom-left */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,oklch(0.10 0.005 120 / .7) 0%,oklch(0.10 0.005 120 / .15) 50%,oklch(0.10 0.005 120 / .05) 100%)}
+.hero-content{position:relative;z-index:1;padding:4rem var(--pad) clamp(3rem,6vw,5rem);max-width:600px}
+.hero-eyebrow{font-size:.72rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:oklch(0.80 0.15 48);margin-bottom:1rem;display:block}
+.hero h1{font-size:clamp(2.6rem,5.5vw,5rem);font-weight:700;line-height:1.02;letter-spacing:-.03em;margin-bottom:1rem;color:#fff}
+.hero h1 i{font-weight:300}
+.hero p{font-size:1rem;font-weight:300;color:oklch(0.85 0.005 110);max-width:420px;line-height:1.6;margin-bottom:2rem}
+.hero-cta{display:inline-block;padding:.85rem 2rem;background:var(--accent);color:#fff;font-weight:600;text-decoration:none;border-radius:2px;font-size:.92rem;transition:transform .2s}
+.hero-cta:hover{transform:translateY(-2px)}
 
-/* ── POSITIONING: short text block in space ── */
-.positioning{
-  padding:clamp(4rem,8vw,8rem) clamp(1rem,4vw,2.5rem);
-  max-width:500px;
-}
-.positioning h2{font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:700;line-height:1.2;letter-spacing:-.015em;margin-bottom:1rem}
-.positioning p{font-size:.9rem;color:var(--muted);line-height:1.6}
+/* POSITIONING — narrow, warm */
+.positioning{padding:var(--gap) var(--pad);max-width:580px;margin:0 auto;text-align:center}
+.positioning h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;line-height:1.25;margin-bottom:1rem;letter-spacing:-.015em}
+.positioning p{font-size:1rem;color:var(--muted);line-height:1.7;font-weight:400}
 
-/* ── PROOF 1: full-bleed image break ── */
-.proof-full{width:100%;height:clamp(300px,60vh,500px)}
-.proof-full img{width:100%;height:100%;object-fit:cover}
-
-/* ── SERVICES: anchored by images, not boxed ── */
-.services{padding:clamp(4rem,8vw,8rem) clamp(1rem,4vw,2.5rem);max-width:700px}
-.services h2{font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:700;margin-bottom:3rem;letter-spacing:-.015em}
-.service-item{
-  display:flex;align-items:center;gap:clamp(1.5rem,4vw,3rem);
-  padding:1.75rem 0;
-  /* No border! Just whitespace */
-}
+/* SERVICES — round image anchors, free-standing */
+.services{padding:0 var(--pad) var(--gap);max-width:900px;margin:0 auto}
+.services-intro{text-align:center;margin-bottom:4rem}
+.services-intro h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;margin-bottom:.5rem;letter-spacing:-.015em}
+.services-intro p{color:var(--muted);font-weight:400}
+.service-item{display:flex;align-items:center;gap:clamp(2rem,5vw,4rem);padding:2.5rem 0}
 .service-item:nth-child(odd){flex-direction:row-reverse}
-.service-img{flex:0 0 clamp(80px,15vw,120px)}
+.service-img{flex:0 0 clamp(130px,20vw,180px)}
 .service-img img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%}
-.service-text{flex:1}
-.service-text h3{font-size:1.05rem;font-weight:700;margin-bottom:.25rem;letter-spacing:-.01em}
-.service-text p{font-size:.82rem;color:var(--muted);line-height:1.5;max-width:320px}
-.service-price{display:inline-block;margin-top:.35rem;font-size:.75rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.service-body{flex:1}
+.service-num{font-size:.68rem;font-weight:600;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem;display:block}
+.service-body h3{font-size:1.3rem;font-weight:600;margin-bottom:.4rem;letter-spacing:-.01em}
+.service-body p{font-size:.9rem;color:var(--muted);line-height:1.6;max-width:400px;font-weight:400}
+.service-price{display:inline-block;margin-top:.6rem;font-size:.8rem;color:var(--accent);font-weight:600}
 
-/* ── PROOF 2: another image break ── */
-.proof-break{padding:0 clamp(1rem,4vw,2.5rem) clamp(4rem,8vw,8rem)}
-.proof-break img{width:100%;height:clamp(250px,40vh,400px);object-fit:cover}
+/* FULL-BLEED BREAK */
+.visual-break{position:relative;height:70vh;margin:var(--gap) 0;display:flex;align-items:center;justify-content:center}
+.visual-break img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.visual-break .overlay{position:absolute;inset:0;background:oklch(0.10 0.005 120 / .35)}
+.visual-break .label{position:relative;z-index:1;color:#fff;font-size:clamp(1.3rem,3vw,2rem);font-weight:300;letter-spacing:.05em;text-align:center}
 
-/* ── TRUST: quiet, integrated ── */
-.trust{
-  padding:0 clamp(1rem,4vw,2.5rem) clamp(4rem,8vw,8rem);
-  display:flex;gap:clamp(2rem,6vw,5rem);flex-wrap:wrap;max-width:600px;
-}
+/* PROOF — one huge, one detail */
+.proof{padding:0 var(--pad) var(--gap);max-width:1050px;margin:0 auto}
+.proof-header{margin-bottom:3rem;text-align:center}
+.proof-header h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;margin-bottom:.4rem;letter-spacing:-.015em}
+.proof-header p{color:var(--muted);font-weight:400}
+.proof-duo{display:flex;gap:1.5rem;align-items:start}
+.proof-main{flex:2}.proof-main img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:2px}
+.proof-side{flex:1}.proof-side img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px}
+.proof-caption{margin-top:1.5rem;font-size:.88rem;color:var(--muted);font-weight:400;text-align:center;font-style:italic}
+
+/* TRUST */
+.trust{padding:0 var(--pad) var(--gap);max-width:700px;margin:0 auto}
+.trust-inner{display:flex;gap:clamp(2rem,5vw,4rem);flex-wrap:wrap}
 .trust-col{flex:1;min-width:180px}
-.trust-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);font-weight:600;margin-bottom:.6rem;display:block}
-.trust p,.trust li{font-size:.85rem;color:var(--muted);line-height:1.7}
+.trust-label{font-size:.68rem;font-weight:600;letter-spacing:.15em;color:var(--accent);text-transform:uppercase;margin-bottom:.75rem;display:block}
+.trust p,.trust-addr{font-size:.9rem;color:var(--muted);line-height:1.75;font-weight:400}
 .trust-hours{list-style:none}
-.trust-hours li{display:flex;justify-content:space-between;padding:.25rem 0}
-.trust-brands{margin-top:.75rem;display:flex;flex-wrap:wrap;gap:.4rem 1rem}
-.trust-brands span{font-size:.78rem;color:var(--muted)}
+.trust-hours li{display:flex;justify-content:space-between;padding:.35rem 0;font-size:.88rem;font-weight:400}
+.trust-hours .day{font-weight:500}.trust-hours .time{color:var(--muted)}
+.trust-brands{display:flex;flex-wrap:wrap;gap:.75rem 1.25rem;margin-top:.5rem}
+.trust-brands span{font-size:.8rem;color:var(--muted);font-weight:400}
 
-/* ── CONTACT: emerges from image flow ── */
-.contact{
-  padding:clamp(3rem,6vw,6rem) clamp(1rem,4vw,2.5rem);
-  text-align:center;
-}
-.contact h2{font-size:1.6rem;font-weight:700;margin-bottom:.75rem;letter-spacing:-.015em}
-.contact p{font-size:.9rem;color:var(--muted);max-width:400px;margin:0 auto 1.5rem}
-.contact-cta{display:inline-block;padding:.9rem 2rem;background:var(--accent);color:#fff;font-weight:700;text-decoration:none;border-radius:2px;font-size:.95rem;text-transform:uppercase;letter-spacing:.04em}
-.contact-info{font-size:.85rem;color:var(--muted);line-height:1.8;margin-top:1.5rem}
-.contact-info a{color:var(--ink);text-decoration:none}
-.btc{font-size:.75rem;color:var(--muted);opacity:.5;margin-top:.75rem}
+/* CONTACT — emerges from flow */
+.contact{padding:var(--gap) var(--pad) 4rem;max-width:550px;margin:0 auto;text-align:center}
+.contact h2{font-size:1.8rem;font-weight:600;margin-bottom:1.25rem;letter-spacing:-.015em}
+.contact-cta{display:inline-block;padding:1rem 2.5rem;background:var(--accent);color:#fff;font-weight:600;text-decoration:none;border-radius:2px;font-size:1rem;margin-bottom:2rem;transition:transform .2s}
+.contact-cta:hover{transform:translateY(-2px)}
+.contact-detail{font-size:.9rem;color:var(--muted);line-height:1.9;font-weight:400}
+.contact-detail a{color:var(--ink);text-decoration:none;font-weight:500}
+.contact-detail a:hover{color:var(--accent)}
+.btc{font-size:.75rem;color:var(--muted);margin-top:1rem;opacity:.5}
+.footer-note{font-size:.72rem;color:var(--muted);opacity:.45;margin-top:2.5rem}
 
-@media(max-width:600px){
-  .hero-text{padding-right:1rem}
-  .service-item,.service-item:nth-child(odd){flex-direction:column;align-items:flex-start;gap:1rem}
-  .service-img{flex:auto;width:60px}
+@media(max-width:700px){
+  .service-item,.service-item:nth-child(odd){flex-direction:column;text-align:center}
+  .service-body p{margin:0 auto}
+  .proof-duo{flex-direction:column}
+  .proof-main img{aspect-ratio:4/3}
   .nav-links{display:none}
+  .visual-break{height:50vh}
+  .trust-inner{flex-direction:column}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-brand">Haartrend Bergau</div>
+  <div class="nav-brand"><span>Haartrend</span> Bergau</div>
   <ul class="nav-links">
     <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#arbeiten">Arbeiten</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
-  <a href="tel:+492****2115" class="nav-cta">Anrufen</a>
+  <a href="tel:+492****2115" class="nav-cta">(0211) 67 21 15</a>
 </nav>
 
-<!-- ═══════════ HERO: full-bleed ═══════════ -->
 <section class="hero">
-  <img src="probes/probe-b-proof.png" alt="Haartrend Bergau" loading="eager">
-  <div class="hero-text">
+  <div class="hero-bg"><img src="../images/hero-b-model.jpg" alt="Haartrend Bergau" loading="eager"></div>
+  <div class="hero-content">
     <span class="hero-eyebrow">Düsseldorf-Flingern</span>
-    <h1>Ihr Haar.<br>Unser Handwerk.</h1>
-    <p>Seit über 25 Jahren. Ildikó Bergau und ihr Team — genau hingesehen, präzise gearbeitet.</p>
-    <a href="tel:+492****2115" class="hero-cta">Termin</a>
+    <h1>Handwerk<br><i>das man sieht</i></h1>
+    <p>Seit über 25 Jahren — Haarschnitt, Farbe und Pflege mit dem Blick fürs Detail.</p>
+    <a href="tel:+492****2115" class="hero-cta">Jetzt Termin</a>
   </div>
 </section>
 
-<!-- ═══════════ POSITIONING ═══════════ -->
 <section class="positioning">
   <h2>„Ich will, dass Sie den Salon verlassen und sich richtig gut fühlen."</h2>
-  <p>Nicht wegen der Frisur allein — sondern weil jemand genau hingesehen hat. Das ist der Unterschied.</p>
+  <p>Ildikó Bergau führt ihren Salon mit Leidenschaft und Präzision. Kein Durchlauf, kein Standard.</p>
 </section>
 
-<!-- ═══════════ PROOF FULL-BLEED ═══════════ -->
-<div class="proof-full"><img src="probes/probe-a-asymmetric.png" alt="Salon Arbeit" loading="lazy"></div>
-
-<!-- ═══════════ SERVICES ═══════════ -->
 <section class="services" id="leistungen">
-  <h2>Leistungen</h2>
+  <div class="services-intro">
+    <h2>Was wir für Sie tun</h2>
+    <p>Handwerk, das bleibt — nicht nur bis zur nächsten Wäsche.</p>
+  </div>
 
   <div class="service-item">
-    <div class="service-img"><img src="probes/probe-c-typographic.png" alt="Schnitt" loading="lazy"></div>
-    <div class="service-text">
-      <h3>Haarschnitt & Styling</h3>
-      <p>Präzision für Damen, Herren, Kinder. GHD-Tools für den perfekten Look.</p>
-      <span class="service-price">ab 25 €</span>
+    <div class="service-img"><img src="../images/model-bob-portrait.jpg" alt="Haarschnitt" loading="lazy"></div>
+    <div class="service-body">
+      <span class="service-num">01</span>
+      <h3>Haarschnitt</h3>
+      <p>Damen, Herren und Kinder. Jeder Schnitt mit Blick für Gesichtsform und Haarstruktur.</p>
+      <span class="service-price">ab 35 €</span>
     </div>
   </div>
 
   <div class="service-item">
-    <div class="service-img"><img src="probes/probe-b-proof.png" alt="Farbe" loading="lazy"></div>
-    <div class="service-text">
-      <h3>Färben & Typveränderung</h3>
-      <p>L'Oréal Professional. Natürlich oder Statement — mit ehrlicher Beratung.</p>
+    <div class="service-img"><img src="../images/service-color-detail.jpg" alt="Färben" loading="lazy"></div>
+    <div class="service-body">
+      <span class="service-num">02</span>
+      <h3>Färben & Strähnen</h3>
+      <p>L'Oréal Professional. Balayage, Strähnen oder komplette Farbveränderung.</p>
       <span class="service-price">ab 45 €</span>
     </div>
   </div>
 
   <div class="service-item">
-    <div class="service-img"><img src="probes/probe-a-asymmetric.png" alt="Verlängerung" loading="lazy"></div>
-    <div class="service-text">
-      <h3>Haarverlängerung</h3>
-      <p>Hairdreams Echthaar. Unsichtbare Übergänge, natürliches Volumen.</p>
-      <span class="service-price">ab 150 €</span>
+    <div class="service-img"><img src="../images/model-waves-back.jpg" alt="Typveränderung" loading="lazy"></div>
+    <div class="service-body">
+      <span class="service-num">03</span>
+      <h3>Typveränderung</h3>
+      <p>Beratung, Planung und Umsetzung aus einer Hand. Mit Zeit für Ihre Vorstellungen.</p>
+      <span class="service-price">Beratung kostenlos</span>
     </div>
   </div>
 
   <div class="service-item">
-    <div class="service-img"><img src="probes/probe-c-typographic.png" alt="Kosmetik" loading="lazy"></div>
-    <div class="service-text">
-      <h3>Kosmetik, Wimpern, Piercing</h3>
-      <p>Alcina Waxing, Wimpernstyling und hygienisches Piercing — alles unter einem Dach.</p>
+    <div class="service-img"><img src="../images/model-male-crop.jpg" alt="Kosmetik" loading="lazy"></div>
+    <div class="service-body">
+      <span class="service-num">04</span>
+      <h3>Kosmetik & Piercing</h3>
+      <p>Waxing mit Alcina, Wimpern, Hairdreams-Verlängerung und hygienisches Piercing.</p>
       <span class="service-price">ab 18 €</span>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ PROOF BREAK ═══════════ -->
-<div class="proof-break"><img src="probes/probe-b-proof.png" alt="Detail" loading="lazy"></div>
+<div class="visual-break">
+  <img src="../images/hero-c-botanical.jpg" alt="Salon Atmosphäre" loading="lazy">
+  <div class="overlay"></div>
+  <div class="label">Ein Ort zum Ankommen</div>
+</div>
 
-<!-- ═══════════ TRUST ═══════════ -->
-<section class="trust">
-  <div class="trust-col">
-    <span class="trust-label">Adresse</span>
-    <p>Flurstr. 33<br>40235 Düsseldorf-Flingern</p>
-    <span class="trust-label" style="margin-top:1.25rem">Marken</span>
-    <div class="trust-brands">
-      <span>L'Oréal</span><span>Hairdreams</span><span>GHD</span><span>Alcina</span>
-    </div>
+<section class="proof" id="arbeiten">
+  <div class="proof-header">
+    <h2>So sieht Handwerk aus</h2>
+    <p>Echte Arbeit. Aus Flingern. Für Sie.</p>
   </div>
-  <div class="trust-col">
-    <span class="trust-label">Öffnungszeiten</span>
-    <ul class="trust-hours">
-      <li><span>Di</span><span>09–19</span></li>
-      <li><span>Mi</span><span>09–18</span></li>
-      <li><span>Do</span><span>09–19</span></li>
-      <li><span>Fr</span><span>09–19</span></li>
-      <li><span>Sa</span><span>09–15</span></li>
-    </ul>
+  <div class="proof-duo">
+    <div class="proof-main"><img src="../images/hero-a-salon.jpg" alt="Salon Einblick" loading="lazy"></div>
+    <div class="proof-side"><img src="../images/proof-hands-styling.jpg" alt="Handwerk Detail" loading="lazy"></div>
+  </div>
+  <p class="proof-caption">Jeder Handgriff mit Erfahrung — seit über 25 Jahren in der Flurstraße.</p>
+</section>
+
+<section class="trust">
+  <div class="trust-inner">
+    <div class="trust-col">
+      <span class="trust-label">Adresse</span>
+      <p class="trust-addr">Flurstr. 33<br>40235 Düsseldorf-Flingern</p>
+      <span class="trust-label" style="margin-top:1.5rem">Marken</span>
+      <div class="trust-brands">
+        <span>L'Oréal Professional</span><span>Hairdreams</span><span>GHD</span><span>Alcina</span>
+      </div>
+    </div>
+    <div class="trust-col">
+      <span class="trust-label">Öffnungszeiten</span>
+      <ul class="trust-hours">
+        <li><span class="day">Di</span><span class="time">09–19</span></li>
+        <li><span class="day">Mi</span><span class="time">09–18</span></li>
+        <li><span class="day">Do</span><span class="time">09–19</span></li>
+        <li><span class="day">Fr</span><span class="time">09–19</span></li>
+        <li><span class="day">Sa</span><span class="time">09–15</span></li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════ CONTACT ═══════════ -->
 <section class="contact" id="kontakt">
-  <h2>Bereit?</h2>
-  <p>5€ Willkommensgutschein für Neukunden. Anruf genügt.</p>
+  <h2>Bereit für Veränderung?</h2>
   <a href="tel:+492****2115" class="contact-cta">(0211) 67 21 15</a>
-  <div class="contact-info">
-    Ildikó Bergau · <a href="mailto:info@haartrend-bergau.de">info@haartrend-bergau.de</a>
+  <div class="contact-detail">
+    Ildikó Bergau · <a href="mailto:info@haartrend-bergau.de">info@haartrend-bergau.de</a><br>
+    5€ Willkommensgutschein für Neukunden
   </div>
-  <div class="btc">Bitcoin-Zahlung möglich</div>
+  <div class="btc">Zahlung auch per Bitcoin möglich</div>
+  <div class="footer-note">Haartrend Bergau · Flurstr. 33, 40235 Düsseldorf-Flingern</div>
 </section>
 
 </body>
